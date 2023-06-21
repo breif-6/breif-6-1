@@ -2,7 +2,8 @@
 function Footer() {
   return (
     <>
-    <h1>footer 5</h1>
+    <h1>footer </h1>
+    <h2>talal</h2>
     </>
   );
 }
