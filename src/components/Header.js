@@ -19,7 +19,7 @@ function Header() {
         </li>
         <li className="nav-item dropdown">
           <a className="nav-link dropdown-toggle" href="#1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
+            heba
           </a>
           <ul className="dropdown-menu">
             <li><a className="dropdown-item" href="#1">Action</a></li>
