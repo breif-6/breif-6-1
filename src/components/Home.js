@@ -7,6 +7,7 @@ import Footer from './Footer';
 import ContractList from './ContractList';
 
 
+
 import '../styles/Home.css';
 import React, { useEffect } from 'react';
 import $ from 'jquery';
@@ -51,9 +52,7 @@ function Home() {
     return (
       <>
       <Header />
-      <h1>Home</h1>
       <ContractList />
-
       <Main />
       <About />
       <Values />

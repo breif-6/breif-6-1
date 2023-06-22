@@ -26,9 +26,9 @@ export default function ContractList() {
     // }
 
     return (
-<div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px', margin: '50px' }}>
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px', margin: '50px' }}>
       {contracts.map((contract, index) => (
-        <div className="card" key={contract.id} style={{ width: '18rem', textAlign:'center' }}>
+        <div className="card" key={contract.id} style={{ width: '19rem', textAlign:'center' }}>
           <div className="card-body">
             <h5 className="card-title">{contract.contract_name}</h5>
             <p className="card-text">
