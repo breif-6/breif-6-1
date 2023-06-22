@@ -7,6 +7,7 @@ import Footer from './Footer';
 import '../styles/Home.css';
 import React, { useEffect } from 'react';
 import $ from 'jquery';
+import { YTvideos } from './Youtube';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Home() {
@@ -49,6 +50,7 @@ function Home() {
       <>
       <Header />
       <Main />
+      <YTvideos/>
       <About />
       <Values />
       <Features />
