@@ -10,6 +10,7 @@ import ContractList from './ContractList';
 import '../styles/Home.css';
 import React, { useEffect } from 'react';
 import $ from 'jquery';
+import { YTvideos } from './Youtube';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Home() {
@@ -55,6 +56,7 @@ function Home() {
       <ContractList />
 
       <Main />
+      <YTvideos/>
       <About />
       <Values />
       <Features />
