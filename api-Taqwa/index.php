@@ -10,6 +10,7 @@ $objDb = new DbConnect;
 $conn = $objDb->connect();
 
 $method = $_SERVER['REQUEST_METHOD'];
+
 switch($method) {
     case "GET":
         $sql = "SELECT * FROM contracts";

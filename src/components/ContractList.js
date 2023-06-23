@@ -12,7 +12,7 @@ export default function ContractList() {
     }, []);
 
     function getContracts() {
-        axios.get('http://localhost/api-Taqwa/Contracts/').then(function(response) {
+        axios.get('http://localhost/api-Taqwa/index.php/').then(function(response) {
             console.log(response.data);
             setContracts(response.data);
         });
