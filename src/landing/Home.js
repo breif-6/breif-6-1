@@ -5,6 +5,8 @@ import Values from './Values';
 import Features from './Features';
 import Footer from './Footer';
 import ContractList from './ContractList';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import SignUpForm from './sign_up'
 
 
 import '../styles/Home.css';
@@ -52,13 +54,27 @@ function Home() {
       <>
       <Header />
 
+     <BrowserRouter>
+      <div className="Home">
+        <Header />
+        <Routes>
+         
+          <Route exact path="/sign_up" element={<SignUpForm />} />
+        </Routes>
+
+        <Footer />
+      </div>
+     </BrowserRouter>
+
+      {/* 
+      <ContractList />
       <Main />
       
 
       <About />
       <Values /><ContractList />
       <Features />
-      <Footer />
+      <Footer /> */}
       </>
     );
   }

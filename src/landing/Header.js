@@ -1,8 +1,11 @@
-
+import React from 'react';
+import { NavLink, BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import SignUpForm from './sign_up';
 
 function Header() {
     return (
       <>
+   
         <nav class="navbar navbar-default navbar-fixed-top">
           <div class="container">
             <div class="navbar-header">
@@ -11,19 +14,24 @@ function Header() {
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>                        
               </button>
-              <a class="navbar-brand" href="#myPage">Logo</a>
+              <NavLink class="navbar-brand" to="#myPage">Logo</NavLink>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
               <ul class="nav navbar-nav navbar-right">
-                <li><a href="#about">ABOUT</a></li>
-                <li><a href="#services">SERVICES</a></li>
-                <li><a href="#portfolio">PORTFOLIO</a></li>
-                <li><a href="#pricing">PRICING</a></li>
-                <li><a href="#contact">CONTACT</a></li>
+                <li><NavLink to="#about">ABOUT</NavLink></li>
+                <li><NavLink to="#services">SERVICES</NavLink></li>
+                <li><NavLink to="#portfolio">PORTFOLIO</NavLink></li>
+                <li><NavLink to="#pricing">PRICING</NavLink></li>
+                <li><NavLink to="#contact">CONTACT</NavLink></li>
+                <li><NavLink to='/sign_up'> sign up</NavLink> </li>
+               
               </ul>
             </div>
           </div>
         </nav>
+      
+
+       
       </>
     );
   }
