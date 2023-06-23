@@ -5,6 +5,7 @@ import Values from './Values';
 import Features from './Features';
 import Footer from './Footer';
 import ContractList from './ContractList';
+import CurrentLocation from "./currentLocation";
 
 
 import '../styles/Home.css';
@@ -54,7 +55,11 @@ function Home() {
       <Header />
       <h1>Home</h1>
       <YTvideos/>
-
+      <React.Fragment>
+      <div className="container">
+        <CurrentLocation />
+      </div>
+    </React.Fragment>
       <ContractList />
 
       <Main />
