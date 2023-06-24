@@ -143,7 +143,7 @@ const NewContracts = () => {
 
   return (
     <MainCard
-      title="Basic Typography"
+      title="New Contracts Crud"
       secondary={<SecondaryAction link="https://next.material-ui.com/system/typography/" />}
     >
       {successMessage && (
