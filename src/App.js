@@ -32,6 +32,7 @@ const App = () => {
         </NavigationScroll>
       </ThemeProvider>
     </StyledEngineProvider>
+    
   );
 };
 
