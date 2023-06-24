@@ -25,7 +25,7 @@ export default function ContractList() {
       contract_id: contractId
     };
 
-    axios.post('http://localhost/api-user-contracts/contract/save', data)
+    axios.post('http://localhost/breif-6-1/api-user-contracts/contract/save', data)
       .then(function (response) {
         console.log(response.data);
         navigate('/free/ContractList');
@@ -33,7 +33,7 @@ export default function ContractList() {
   }
 
   function getContracts() {
-    axios.get('http://localhost/api-Taqwa/Contracts/').then(function (response) {
+    axios.get('http://localhost/breif-6-1/api-Taqwa/Contracts/').then(function (response) {
       console.log(response.data);
       setContracts(response.data);
     });
