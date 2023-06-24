@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
-
+// import { ChakraBaseProvider } from '@chakra-ui/react'
+// `@chakra-ui/theme` is a part of the base install with `@chakra-ui/react`
 import { ThemeProvider } from '@mui/material/styles';
 import { CssBaseline, StyledEngineProvider } from '@mui/material';
 
