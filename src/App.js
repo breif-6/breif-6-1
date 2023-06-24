@@ -24,9 +24,11 @@ const App = () => {
         <CssBaseline />
         <NavigationScroll>
           <Routes />
+          
         </NavigationScroll>
       </ThemeProvider>
     </StyledEngineProvider>
+    
   );
 };
 
