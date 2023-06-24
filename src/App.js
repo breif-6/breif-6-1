@@ -13,18 +13,20 @@ import themes from 'themes';
 import NavigationScroll from 'layout/NavigationScroll';
 import LandingPage from 'landing/LandingPage';
 
-// ==============================|| APP ||============================== //
+// ==============================||window.localStorge.getItem() APP ||============================== //
 
 const App = () => {
   const customization = useSelector((state) => state.customization);
-  const typeUser = window.localStorge.getItem;
+  const typeUser = window.localStorage.getItem('role_id');
+
+  // const typeUser = window.localStorge.getItem('role_id');
 
   return (
     <StyledEngineProvider injectFirst>
       <ThemeProvider theme={themes(customization)}>
         <CssBaseline />
         <NavigationScroll>
-          {typeUser === "admin" ? (
+          {typeUser == "1" ? (
             <Routes />
           ) : (
             <LandingPage/>

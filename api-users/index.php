@@ -33,7 +33,7 @@ switch($method) {
             $user = json_decode(file_get_contents('php://input'));
             $hashedPassword = password_hash($user->password, PASSWORD_DEFAULT);
             
-            $sql = "INSERT INTO users(name, email, password, address) VALUES(:name, :email, :password, :address)";
+            $sql = "INSERT INTO users(name, email, password, address,role_id) VALUES(:name, :email, :password, :address,2)";
             $stmt = $conn->prepare($sql);
         
             $stmt->bindParam(':name', $user->name);
