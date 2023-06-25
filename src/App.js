@@ -1,7 +1,6 @@
 import { useSelector } from 'react-redux';
 import { ThemeProvider } from '@mui/material/styles';
 import { CssBaseline, StyledEngineProvider } from '@mui/material';
-// import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 // routing
 import Routes from 'routes';
@@ -12,29 +11,31 @@ import themes from 'themes';
 // project imports
 import NavigationScroll from 'layout/NavigationScroll';
 import LandingPage from 'landing/LandingPage';
-
-// ==============================||window.localStorge.getItem() APP ||============================== //
+import Profile from 'landing/Profile'; // Assuming the correct import path for the Profile component
 
 const App = () => {
   const customization = useSelector((state) => state.customization);
   const typeUser = window.localStorage.getItem('role_id');
-
-  // const typeUser = window.localStorge.getItem('role_id');
 
   return (
     <StyledEngineProvider injectFirst>
       <ThemeProvider theme={themes(customization)}>
         <CssBaseline />
         <NavigationScroll>
-          {typeUser == "1" ? (
+          {typeUser == '1' ? (
             <Routes />
+          ) : typeUser == '2' ? (
+            <>
+              <Profile />
+              {console.log('You are in the profile')}
+            </>
           ) : (
-            <LandingPage/>
+
+            <LandingPage />
           )}
         </NavigationScroll>
       </ThemeProvider>
     </StyledEngineProvider>
-    
   );
 };
 

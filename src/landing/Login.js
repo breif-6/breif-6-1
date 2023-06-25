@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const Login = () => {
-
   let navigate = useNavigate();
-
   const [user, setUser] = useState({ email: "", password: "" });
+  const [isLoading, setIsLoading] = useState(true); // Added isLoading state
+
+  useEffect(() => {
+    setIsLoading(false); // Set isLoading to false when the component mounts
+  }, []);
 
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
@@ -28,11 +31,15 @@ const Login = () => {
           window.localStorage.setItem('address', result.data.user.address);
           window.localStorage.setItem('user id', result.data.user.id);
           window.localStorage.setItem('role_id', result.data.user.role_id);
-          if (result.data.user.role_id === '2') {
-            navigate(`/Login`);
+          if (result.data.user.role_id == '2') {
+            navigate(`/profile`);
+          } else if(result.data.user.role_id == '1') {
+            navigate(`/dashboard/default`);
           } else {
-            navigate(`/free`);
+            navigate(`/login`);
           }
+          setIsLoading(true); // Set isLoading to true before the refresh
+          window.location.reload(); // Add page refresh
         } else {
           alert("Invalid User");
         }
@@ -42,7 +49,10 @@ const Login = () => {
         console.error(error);
         alert("An error occurred. Please try again.");
       });
+  }
 
+  if (isLoading) {
+    return null; // Render nothing while isLoading is true
   }
 
   return (
@@ -74,7 +84,6 @@ const Login = () => {
           name="submit"
           style={styles.button}
         />
-
       </form>
     </div>
   );
