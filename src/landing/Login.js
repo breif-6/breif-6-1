@@ -23,7 +23,7 @@ const Login = () => {
       password: user.password,
     }
     console.log(sendData);
-    axios.post("http://localhost/breaf-6/api-Somaya/Login.php", sendData)
+    axios.post("http://localhost/breif-6-1/api-Somaya/Login.php", sendData)
       .then((result) => {
         if (result.data.Status === '200') {
           window.localStorage.setItem('email', result.data.user.email);

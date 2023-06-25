@@ -61,7 +61,7 @@ const NotificationSection = () => {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState('');
   /**
-   * anchorRef is used on different componets and specifying one type leads to other components throwing an error
+   * anchorRef is used on different components, and specifying one type leads to other components throwing an error
    * */
   const anchorRef = useRef(null);
 
@@ -85,7 +85,7 @@ const NotificationSection = () => {
   }, [open]);
 
   const handleChange = (event) => {
-    if (event?.target.value) setValue(event?.target.value);
+    if (event?.target.value) setValue(event.target.value);
   };
 
   return (
@@ -96,7 +96,8 @@ const NotificationSection = () => {
           mr: 3,
           [theme.breakpoints.down('md')]: {
             mr: 2
-          }
+          },
+          display: 'none' // Hides the main container
         }}
       >
         <ButtonBase sx={{ borderRadius: '12px' }}>
