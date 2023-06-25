@@ -11,11 +11,10 @@ const Weather = () => {
   const fetchWeatherData = async (city) => {
     try {
       const response = await axios.get(`${apiurl}${city}&appid=${apikey}`);
-
       const { list } = response.data;
+
       if (list && list.length > 0) {
-        const firstForecast = list[0];
-        const { main, dt_txt } = firstForecast;
+        const { main, dt_txt } = list[0];
         const { temp } = main;
         setTemperature(temp);
         setDate(dt_txt);
@@ -31,18 +30,12 @@ const Weather = () => {
   }, []);
 
   return (
-    <div>
-      <h2>Weather Information</h2>
-      {temperature && (
-        <p>
-          Temperature: {temperature}°C
-        </p>
-      )}
-      {date && (
-        <p>
-          Date: {date}
-        </p>
-      )}
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+      <div>
+        <h2> The Weather </h2>
+        {temperature && <p>Temperature: {temperature}°C</p>}
+        {date && <p>Date: {date}</p>}
+      </div>
     </div>
   );
 };
