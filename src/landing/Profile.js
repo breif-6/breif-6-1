@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
 import Logout from './Logout';
-import Userprofile from './Userprofile';
 import ContractList from './ContractList';
-import Weather from './Weather';
+// import Weather from './Weather';
 import { Container, Grid } from '@mui/material';
+
+// import AuthRegister from './authentication/auth-forms/AuthRegister';
+// import { Routes, Route } from 'react-router-dom';
+import Weather from "./Weather";
+import Userprofile from "./Userprofile";
+import SelectContracts from "./SelectContracts";
 
 function Profile() {
   const [showContractList, setShowContractList] = useState(false);
@@ -25,6 +30,7 @@ function Profile() {
       </Container>
       {showContractList && <ContractList />}
       <Weather />
+      <SelectContracts/>
     </>
   );
 }
