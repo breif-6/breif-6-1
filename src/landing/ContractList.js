@@ -1,7 +1,8 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import { Dialog, DialogTitle, DialogContent, DialogActions, Button } from '@mui/material';
-
+import Alert from '@mui/material/Alert';
+import AlertTitle from '@mui/material/AlertTitle';
 
 export default function ContractList() {
   const [contracts, setContracts] = useState([]);
@@ -11,6 +12,8 @@ export default function ContractList() {
   const [user, setUser] = useState(null);
   const [employeeId, setEmployeeId] = useState(null);
   const [contractId, setContractId] = useState(null);
+  const [successMessage, setSuccessMessage] = useState(null);
+  const [warningMessage, setWarningMessage] = useState(false); // Added missing state variable
 
   useEffect(() => {
     getContracts();
@@ -20,18 +23,29 @@ export default function ContractList() {
     event.preventDefault();
 
     const data = {
-      user_id: localStorage.getItem("user id"), // Get the user_id from local storage
+      user_id: localStorage.getItem('id'), // Get the user_id from local storage
       employee_id: employeeId,
-      contract_id: contractId
+      contract_id: contractId,
     };
 
-    axios.post('http://localhost/breif-6-1/api-user-contracts/contract/save', data)
+    axios
+      .post('http://localhost/breif-6-1/api-user-contracts/contract/save', data)
       .then(function (response) {
         console.log(response.data);
         closeAddNew();
-        navigate('/free/ContractList');
+        if (response.status === 200) {
+          setSuccessMessage(
+            'The contract has been approved successfully. You can view it in the open table section.'
+          );
+          // navigate('/free/ContractList'); // You need to import the 'navigate' function from your router library
+        }
+      })
+      .catch(function (error) { // Added error handling
+        console.log(error);
+        setWarningMessage(true);
+        setSuccessMessage('An error occurred while approving the contract.');
       });
-  }
+  };
 
   function getContracts() {
     axios.get('http://localhost/breif-6-1/api-Taqwa/Contracts/').then(function (response) {
@@ -42,30 +56,30 @@ export default function ContractList() {
 
   const openPopup = () => {
     setShowPopup(true);
-  }
+  };
 
   const closePopup = () => {
     setShowPopup(false);
-  }
+  };
 
   const openCompanyDetails = () => {
     setOpenDialog(true);
-  }
+  };
 
   const closeCompanyDetails = () => {
     setOpenDialog(false);
-  }
+  };
 
   const openAddNew = (user_id, employee_id, contract_id) => {
     setAddNew(true);
     setUser(user_id);
     setEmployeeId(employee_id);
     setContractId(contract_id);
-  }
+  };
 
   const closeAddNew = () => {
     setAddNew(false);
-  }
+  };
 
   function getRemainingDays(expirationDate) {
     const currentDate = new Date();
@@ -77,6 +91,13 @@ export default function ContractList() {
 
   return (
     <>
+      {successMessage && (
+        <Alert severity={warningMessage ? 'error' : 'success'}>
+          <AlertTitle>{warningMessage ? 'Error' : 'Success'}</AlertTitle>
+          {successMessage}
+        </Alert>
+      )}
+
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px', textAlign: 'center', margin: '80px' }}>
           {contracts.map((contract) => {
@@ -107,10 +128,16 @@ export default function ContractList() {
                     <strong>Employee Number:</strong> {contract.employee_id}
                   </p>
                   <div className="card-footer" style={{ textAlign: 'center' }}>
-                    <button className="btn btn-primary" onClick={openPopup}>Contract Details</button>
-                    <button className="btn btn-primary m-2" onClick={openCompanyDetails}>Company Details</button>
+                    <button className="btn btn-primary" onClick={openPopup}>
+                      Contract Details
+                    </button>
+                    <button className="btn btn-primary m-2" onClick={openCompanyDetails}>
+                      Company Details
+                    </button>
                     <br />
-                    <button className="btn btn-primary" onClick={() => openAddNew(user, contract.employee_id, contract.id)}> Add New </button>
+                    <button className="btn btn-primary" onClick={() => openAddNew(user, contract.employee_id, contract.id)}>
+                      Add New
+                    </button>
                     <div className={`alert p-4 ${alertType} m-3`}>
                       <span>Left for this offer: {remainingDays} Days</span>
                     </div>
@@ -136,17 +163,26 @@ export default function ContractList() {
           </div>
         </DialogContent>
         <DialogActions>
-          <Button onClick={closePopup} color="primary">Ok</Button>
+          <Button onClick={closePopup} color="primary">
+            Ok
+          </Button>
         </DialogActions>
       </Dialog>
 
       <Dialog open={openDialog} onClose={closeCompanyDetails} maxWidth="sm" fullWidth>
         <DialogTitle>Company Details:</DialogTitle>
         <DialogContent>
-          <p>Welcome to our network company! We are a leading provider of advanced networking solutions for businesses of all sizes. <p></p> With our state-of-the-art technology and expert team, we deliver reliable and high-performance networking infrastructure tailored to meet your specific needs.<p></p> Whether you require secure data connectivity, seamless wireless networks, or robust network management, we have you covered.<p></p> Our commitment to exceptional service ensures that your network operates smoothly, allowing you to focus on your core business.<p></p> Trust us for all your networking requirements and experience the power of a reliable and efficient network infrastructure</p>
+          <p>
+            Welcome to our network company! We are a leading provider of advanced networking solutions for businesses of all sizes. <p></p> With our state-of-the-art technology and expert team, we deliver reliable and high-performance networking infrastructure tailored to meet your specific needs.
+            <p></p> Whether you require secure data connectivity, seamless wireless networks, or robust network management, we have you covered.
+            <p></p> Our commitment to exceptional service ensures that your network operates smoothly, allowing you to focus on your core business.
+            <p></p> Trust us for all your networking requirements and experience the power of a reliable and efficient network infrastructure
+          </p>
         </DialogContent>
         <DialogActions>
-          <Button onClick={closeCompanyDetails} color="primary">Ok</Button>
+          <Button onClick={closeCompanyDetails} color="primary">
+            Ok
+          </Button>
         </DialogActions>
       </Dialog>
 
@@ -164,16 +200,20 @@ export default function ContractList() {
               <input type="text" name="contract_id" value={contractId} hidden />
             </div>
             <DialogContent>
-            <div className="form-check">
-            <input className="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked required />
-            <label className="form-check-label" htmlFor="flexCheckChecked">
-              I have read and understood the terms and conditions of the contract and hereby approve its conclusion.
-            </label>
-          </div>
+              <div className="form-check">
+                <input className="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked required />
+                <label className="form-check-label" htmlFor="flexCheckChecked">
+                  I have read and understood the terms and conditions of the contract and hereby approve its conclusion.
+                </label>
+              </div>
             </DialogContent>
             <DialogActions>
-              <Button type="submit" color="primary">Approve</Button>
-              <Button onClick={closeAddNew} color="secondary">Cancel</Button>
+              <Button type="submit" color="primary">
+                Approve
+              </Button>
+              <Button onClick={closeAddNew} color="secondary">
+                Cancel
+              </Button>
             </DialogActions>
           </form>
         </DialogContent>

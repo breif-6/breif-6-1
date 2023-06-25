@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Grid, Typography } from '@mui/material';
+import { Grid, Typography, TextField } from '@mui/material';
 
 // project imports
 import SubCard from 'ui-component/cards/SubCard';
@@ -9,6 +9,7 @@ import { gridSpacing } from 'store/constant';
 
 const SelectContracts = () => {
   const [data, setData] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
   const user_id = window.localStorage.getItem('id');
 
   useEffect(() => {
@@ -23,13 +24,29 @@ const SelectContracts = () => {
       });
   }, [user_id]);
 
+  const filteredData = data.filter(item =>
+    item.contract_name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  const handleSearch = event => {
+    setSearchQuery(event.target.value);
+  };
+
   return (
     <MainCard
       title="Contracts That Work Now"
       secondary={<SecondaryAction link="https://next.material-ui.com/system/typography/" />}
     >
+      <TextField
+        label="Search by Contract Name"
+        value={searchQuery}
+        onChange={handleSearch}
+        fullWidth
+        margin="normal"
+      />
+
       <Grid container spacing={gridSpacing}>
-        {data.map(item => (
+        {filteredData.map(item => (
           <Grid item xs={12} sm={6} key={item.id}>
             <SubCard title="Fetched Data">
               <Grid container direction="column" spacing={1}>
