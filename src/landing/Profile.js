@@ -7,6 +7,8 @@ import ContractList from './ContractList';
 // import AuthRegister from './authentication/auth-forms/AuthRegister';
 // import { Routes, Route } from 'react-router-dom';
 import Weather from "./Weather";
+// import Userprofile from "./Userprofile";
+// import UserEdit from "./UserEdit";
 
 function Profile() {
   return (
@@ -15,7 +17,8 @@ function Profile() {
       <Userprofile />
       <ContractList />
       <Weather />
-
+      {/* <Userprofile/>
+      <UserEdit/> */}
     </>
   );
 }
