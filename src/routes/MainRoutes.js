@@ -2,6 +2,8 @@ import { lazy } from 'react';
 
 // project imports
 import MainLayout from 'layout/MainLayout';
+// import LandingPage from 'landing/LandingPage';
+
 import Loadable from 'ui-component/Loadable';
 
 
@@ -14,6 +16,8 @@ const UtilsColor = Loadable(lazy(() => import('views/utilities/OpenContracts')))
 const UtilsShadow = Loadable(lazy(() => import('views/utilities/ArchiveContracts')));
 const UtilsMaterialIcons = Loadable(lazy(() => import('views/utilities/MaterialIcons')));
 const UtilsTablerIcons = Loadable(lazy(() => import('views/utilities/Contracts')));
+// const Header = Loadable(lazy(() => import('landing/Header')));
+
 
 
 // sample page routing
