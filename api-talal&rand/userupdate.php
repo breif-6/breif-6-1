@@ -7,7 +7,7 @@ header('Content-Type: application/json');
 $servername = "localhost";
 $username = "root";
 $password = "";
-$database = "brief_6";
+$database = "breaf-6";
 
 // Get the user ID from the request
 $id = $_GET['id'];

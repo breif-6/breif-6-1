@@ -13,7 +13,7 @@ const ProfileStatistics = () => {
 
   function getUsers() {
     axios
-      .get('http://localhost/breif-6-1-1/api-talal&rand/user/index') // Update with your actual API endpoint
+      .get('http://localhost/breif-6-1/api-talal&rand/user/index') // Update with your actual API endpoint
       .then(response => {
         console.log(response.data);
         setUsers(response.data);
