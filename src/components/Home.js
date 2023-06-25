@@ -3,7 +3,7 @@ import Main from './Main';
 import About from './About';
 import Values from './Values';
 import Features from './Features';
-import Footer from './Footer';
+// import Footer from './Footer';
 import ContractList from './ContractList';
 import CurrentLocation from "./currentLocation";
 
@@ -67,7 +67,7 @@ function Home() {
       <About />
       <Values />
       <Features />
-      <Footer />
+      {/* <Footer /> */}
       </>
     );
   }
