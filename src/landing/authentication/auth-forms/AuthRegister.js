@@ -73,7 +73,7 @@ const AuthRegister = ({ ...others }) => {
         address: selectedCity,
       });
 
-      const response = await fetch('http://localhost/breaf-6/api-users/', {
+      const response = await fetch('http://localhost/breif-6-1/api-users/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

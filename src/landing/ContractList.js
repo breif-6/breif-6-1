@@ -125,6 +125,7 @@ export default function ContractList() {
         <DialogTitle>Contract Details:</DialogTitle>
         <DialogContent>
           <div>
+            <p>Annual contracts</p>
             <p>Scope of Services:</p> The Provider agrees to deliver premium system services to the Client as outlined in the accompanying service agreement. <p> </p>
             <p>Term:</p> This Contract shall commence on the effective date stated herein and shall remain in effect for the duration specified in the service agreement, unless terminated earlier as per the termination provisions outlined within. <p> </p>
             <p>Payment and Fees:</p> The Client agrees to compensate the Provider according to the payment terms outlined in the service agreement.<p> </p>
