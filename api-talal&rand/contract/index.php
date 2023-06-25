@@ -52,23 +52,20 @@ switch ($method) {
         break;
 
     case "PUT":
-        $contract = json_decode(file_get_contents('php://input'));
-        $sql = "UPDATE contracts SET service_id = :service_id, user_id = :user_id, start_date = :start_date, expire_date = :expire_date, total_cost = :total_cost, status = :status, attachment = :attachment, employee_id = :employee_id WHERE id = :id";
+        $user = json_decode(file_get_contents('php://input'));
+        $sql = "UPDATE users SET name = :name, email = :email, mobile = :mobile, age = :age, address = :address WHERE id = :id";
         $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':service_id', $contract->service_id);
-        $stmt->bindParam(':user_id', $contract->user_id);
-        $stmt->bindParam(':start_date', $contract->start_date);
-        $stmt->bindParam(':expire_date', $contract->expire_date);
-        $stmt->bindParam(':total_cost', $contract->total_cost);
-        $stmt->bindParam(':status', $contract->status);
-        $stmt->bindParam(':attachment', $contract->attachment);
-        $stmt->bindParam(':employee_id', $contract->employee_id);
-        $stmt->bindParam(':id', $contract->id);
-
+        $stmt->bindParam(':name', $user->name);
+        $stmt->bindParam(':email', $user->email);
+        $stmt->bindParam(':mobile', $user->mobile);
+        $stmt->bindParam(':age', $user->age);
+        $stmt->bindParam(':address', $user->address);
+        $stmt->bindParam(':id', $user->id);
+    
         if ($stmt->execute()) {
-            $response = ['status' => 1, 'message' => 'Contract updated successfully.'];
+            $response = ['status' => 1, 'message' => 'User updated successfully.'];
         } else {
-            $response = ['status' => 0, 'message' => 'Failed to update contract.'];
+            $response = ['status' => 0, 'message' => 'Failed to update user.'];
         }
         echo json_encode($response);
         break;
