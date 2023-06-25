@@ -49,7 +49,7 @@ function Home() {
 
       ],
       buttonText: 'Sign up for free',
-      buttonVariant: 'outlined',
+      buttonVariant: 'contained',
     },
     {
       title: 'Standard System Contract',
@@ -70,7 +70,7 @@ function Home() {
         'expiration_date:2023-07-01',
       ],
       buttonText: 'Sign up for free',
-      buttonVariant: 'outlined',
+      buttonVariant: 'contained',
     },
   ];
 

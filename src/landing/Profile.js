@@ -1,19 +1,29 @@
-// import Footer from './Footer';
-// import Header from './Header';
+import React, { useState } from 'react';
 import Logout from './Logout';
 import Userprofile from './Userprofile';
 import ContractList from './ContractList';
-
-// import AuthRegister from './authentication/auth-forms/AuthRegister';
-// import { Routes, Route } from 'react-router-dom';
-import Weather from "./Weather";
+import Weather from './Weather';
+import { Container, Grid } from '@mui/material';
 
 function Profile() {
+  const [showContractList, setShowContractList] = useState(false);
+
+  const toggleContractList = () => {
+    setShowContractList(prevState => !prevState);
+  };
+
   return (
     <>
       <Logout />
       <Userprofile />
-      <ContractList />
+      <Container>
+        <Grid container justifyContent="center" alignItems="center" style={{ minHeight: '50vh' }}>
+          <Grid item>
+            <button className="btn btn-primary" onClick={toggleContractList}>Show offers</button>
+          </Grid>
+        </Grid>
+      </Container>
+      {showContractList && <ContractList />}
       <Weather />
     </>
   );
