@@ -1,6 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Dialog, DialogTitle, DialogContent, DialogActions, Button } from '@mui/material';
+import image1 from "../images/img1.png";
+import image2 from "../images/img2.jpeg";
+import image3 from "../images/img3.jpg";
 
 
 export default function ContractList() {
@@ -20,7 +23,7 @@ export default function ContractList() {
     event.preventDefault();
 
     const data = {
-      user_id: 2,
+      user_id: localStorage.getItem("user id"), // Get the user_id from local storage
       employee_id: employeeId,
       contract_id: contractId
     };
@@ -28,6 +31,7 @@ export default function ContractList() {
     axios.post('http://localhost/breif-6-1/api-user-contracts/contract/save', data)
       .then(function (response) {
         console.log(response.data);
+        closeAddNew();
         navigate('/free/ContractList');
       });
   }
@@ -89,10 +93,27 @@ export default function ContractList() {
               alertType = 'alert-success'; // Green color
             }
 
+            // Check if the contract has expired
+            const currentDate = new Date();
+            const expirationDate = new Date(contract.expiration_date);
+            if (expirationDate < currentDate) {
+              return null; // Skip rendering this contract
+            }
+
+            let selectedImage;
+            if (contract.id === 2) {
+              selectedImage = image1;
+            } else if (contract.id === 3) {
+              selectedImage = image2;
+            } else if (contract.id === 4) {
+              selectedImage = image3;
+            }
+
             return (
               <div className="card" key={contract.id} style={{ width: '23rem' }}>
                 <div className="card-body">
                   <h4 className="card-title">{contract.contract_name}</h4>
+                  <img style={{ margin:'5px' }} src={selectedImage} className="card-img-top" alt="..." />
                   <p className="card-text">
                     <strong>Signing:</strong> {contract.signing_date}
                   </p>

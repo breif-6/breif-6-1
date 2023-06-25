@@ -146,7 +146,7 @@ const Login = () => {
           window.localStorage.setItem('email', result.data.user.email);
           window.localStorage.setItem('name', result.data.user.name);
           window.localStorage.setItem('address', result.data.user.address);
-          window.localStorage.setItem('user id', result.data.user.id);
+          window.localStorage.setItem('id', result.data.user.id);
           window.localStorage.setItem('role_id', result.data.user.role_id);
           if (result.data.user.role_id == '2') {
             navigate(`/profile`);
