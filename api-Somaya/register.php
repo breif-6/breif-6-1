@@ -1,55 +1,29 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Headers: *");
-header("Access-Control-Allow-Methods: *");
+header("Access-Control-Allow-Headers: access");
+header("Access-Control-Allow-Methods: POST");
+header("Content-type: application/json; charset=UTF-8");
+header("Access-Control-Allow-Headers: Content-type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
-include 'DbConnect.php';
-$objDb = new DbConnect;
-$conn = $objDb->connect();
+$data = json_decode(file_get_contents("php://input"));
 
-$method = $_SERVER['REQUEST_METHOD'];
+$name = $data->name;
+$email = $data->email;
+$password = $data->password;
 
-switch($method) {
-    case "GET":
-        $sql = "SELECT * FROM users";
-        $path = explode('/', $_SERVER['REQUEST_URI']);
-        if(isset($path[3]) && is_numeric($path[3])) {
-            $sql .= " WHERE id = :id";
-            $stmt = $conn->prepare($sql);
-            $stmt->bindParam(':id', $path[3]);
-            $stmt->execute();
-            $users = $stmt->fetch(PDO::FETCH_ASSOC);
-        } else {
-            $stmt = $conn->prepare($sql);
-            $stmt->execute();
-            $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        }
+$conn = mysqli_connect('localhost', 'root', '');
+mysqli_select_db($conn, "breaf-6");
 
-        echo json_encode($users);
-        break;
+$sql = "INSERT INTO users (name, email, password) 
+        VALUES ('$name', '$email', '$password')";
 
-    case "POST":
-        $user = json_decode( file_get_contents('php://input') );
-        $sql = "INSERT INTO users(id, name, email, password )
-         VALUES(null, :name, :email, :password )";
+$result = mysqli_query($conn, $sql);
 
-        $stmt = $conn->prepare($sql);
-        $total_cost  = date('Y-m-d');
-        $stmt->bindParam(':name', $user->name);
-        $stmt->bindParam(':email', $user->email);
-        $stmt->bindParam(':password', $user->password_hash($password, PASSWORD_DEFAULT));
-
-
-
-        if($stmt->execute()) {
-            $response = ['status' => 1, 'message' => 'Record created successfully.'];
-        } else {
-            $response = ['status' => 0, 'message' => 'Failed to create record.'];
-        }
-        echo json_encode($response);
-        break;
-
-   
+if ($result) {
+  $response['data'] = array('status' => 'valid');
+} else {
+  $response['data'] = array('status' => 'invalid');
 }
+
+echo json_encode($response);
+?>

@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { ThemeProvider } from '@mui/material/styles';
 import { CssBaseline, StyledEngineProvider } from '@mui/material';
-// import Header from 'landing/Header';
+// import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 // routing
 import Routes from 'routes';
@@ -11,21 +11,30 @@ import themes from 'themes';
 
 // project imports
 import NavigationScroll from 'layout/NavigationScroll';
+import LandingPage from 'landing/LandingPage';
 
-// ==============================|| APP ||============================== //
+// ==============================||window.localStorge.getItem() APP ||============================== //
 
 const App = () => {
   const customization = useSelector((state) => state.customization);
+  const typeUser = window.localStorage.getItem('role_id');
+
+  // const typeUser = window.localStorge.getItem('role_id');
 
   return (
     <StyledEngineProvider injectFirst>
       <ThemeProvider theme={themes(customization)}>
         <CssBaseline />
         <NavigationScroll>
-          <Routes />
+          {typeUser == "1" ? (
+            <Routes />
+          ) : (
+            <LandingPage/>
+          )}
         </NavigationScroll>
       </ThemeProvider>
     </StyledEngineProvider>
+    
   );
 };
 
