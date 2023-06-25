@@ -4,7 +4,6 @@ import { lazy } from 'react';
 import MainLayout from 'layout/MainLayout';
 import Loadable from 'ui-component/Loadable';
 
-
 // dashboard routing
 const DashboardDefault = Loadable(lazy(() => import('views/dashboard/Default')));
 
@@ -15,6 +14,8 @@ const UtilsShadow = Loadable(lazy(() => import('views/utilities/ArchiveContracts
 const UtilsMaterialIcons = Loadable(lazy(() => import('views/utilities/MaterialIcons')));
 const UtilsTablerIcons = Loadable(lazy(() => import('views/utilities/Contracts')));
 
+// const Userprofile = Loadable(lazy(() => import('landing/Userprofile')));
+// const UserEdit = Loadable(lazy(() => import('landing/UserEdit')));
 
 // sample page routing
 const SamplePage = Loadable(lazy(() => import('views/sample-page')));
@@ -87,6 +88,15 @@ const MainRoutes = {
       path: 'sample-page',
       element: <SamplePage />
     }
+    // ,
+    // {
+    //   path: 'Userprofile',
+    //   element: <Userprofile />
+    // },
+    // {
+    //   path: 'UserEdit/:id',
+    //   element: <UserEdit />
+    // }
   ]
 };
 
