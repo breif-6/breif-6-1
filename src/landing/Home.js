@@ -10,8 +10,8 @@ import StarIcon from '@mui/icons-material/StarBorder';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Youtube from './Youtube';
-
-
+// import Login from './Login';
+import Link from '@mui/material/Link';
 function Home() {
 
 //   const apiUrl = 'http://localhost/breif-6-1/api-Taqwa/Contracts/';
@@ -150,10 +150,12 @@ function Home() {
                     ))}
                   </ul>
                 </CardContent>
-                <CardActions>
+                <CardActions sx={{ justifyContent: 'center' }}>
+                  <Link href="/Login">
                   <Button fullWidth variant={tier.buttonVariant}>
                     {tier.buttonText}
                   </Button>
+                  </Link>
                 </CardActions>
               </Card>
             </Grid>
