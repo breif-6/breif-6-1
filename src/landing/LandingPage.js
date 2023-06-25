@@ -14,7 +14,6 @@ function LandingPage() {
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/register" element={<AuthRegister />} />
          </Routes>
-
         <Footer/>
     </>
   );
