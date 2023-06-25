@@ -29,8 +29,8 @@ switch($method) {
         echo json_encode($users);
         break;
     case "POST":
-        $user = json_decode( file_get_contents('php://input') );
-        $sql = "INSERT INTO users(id, name, email, password,mobile, age, address, created_at) VALUES(null, :name, :email, :password, :mobile,:age,:address, :created_at)";
+        $user = json_decode(file_get_contents('php://input'));
+        $sql = "INSERT INTO users (id, name, email, password, mobile, age, address, created_at) VALUES (null, :name, :email, :password, :mobile, :age, :address, :created_at)";
         $stmt = $conn->prepare($sql);
         $created_at = date('Y-m-d');
         $stmt->bindParam(':name', $user->name);
@@ -50,10 +50,9 @@ switch($method) {
         break;
 
     case "PUT":
-        $user = json_decode( file_get_contents('php://input') );
-        $sql = "UPDATE users SET name= :name, email =:email,password=:password, mobile =:mobile,age=:age,address=:address, updated_at =:updated_at WHERE id = :id";
+        $user = json_decode(file_get_contents('php://input'));
+        $sql = "UPDATE users SET name = :name, email = :email, password = :password, mobile = :mobile, age = :age, address = :address WHERE id = :id";
         $stmt = $conn->prepare($sql);
-        $updated_at = date('Y-m-d');
         $stmt->bindParam(':id', $user->id);
         $stmt->bindParam(':name', $user->name);
         $stmt->bindParam(':email', $user->email);
@@ -61,7 +60,6 @@ switch($method) {
         $stmt->bindParam(':mobile', $user->mobile);
         $stmt->bindParam(':age', $user->age);
         $stmt->bindParam(':address', $user->address);
-        $stmt->bindParam(':updated_at', $updated_at);
 
         if($stmt->execute()) {
             $response = ['status' => 1, 'message' => 'Record updated successfully.'];
@@ -86,3 +84,4 @@ switch($method) {
         echo json_encode($response);
         break;
 }
+?>
