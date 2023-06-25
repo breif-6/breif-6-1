@@ -120,7 +120,7 @@ export default function Pricing() {
           <Link
               variant="button"
               color="text.primary"
-              href="/"
+              href="/free"
               sx={{ my: 1, mx: 1.5 }}
             >
               NexTalk
@@ -150,7 +150,7 @@ export default function Pricing() {
            {/* <Route exact path="/LandingPage" element={<LandingPage />} /> */}
            <Route exact path="/login" element={<Login />} />
            <Route exact path="/register" element={<AuthRegister />} />
-           <Route exact path="/" element={<Home />} />
+           <Route exact path="/free" element={<Home />} />
            
         </Routes>
       {/* end Home */}
