@@ -64,18 +64,6 @@ import Container from '@mui/material/Container';
 
 function Copyright(props) {
   return (
-<<<<<<< HEAD
-    <>
-      <Header/>
-        <h2>login Page</h2>
-
-        <Routes>
-          <Route exact path="/login" element={<Login />} />
-          <Route exact path="/register" element={<AuthRegister />} />
-         </Routes>
-        <Footer/>
-    </>
-=======
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
       <Link color="inherit" href="https://mui.com/">
@@ -84,7 +72,6 @@ function Copyright(props) {
       {new Date().getFullYear()}
       {'.'}
     </Typography>
->>>>>>> 976a646170f10cf7e61b83ffa39b71323db56bf5
   );
 }
 
