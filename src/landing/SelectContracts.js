@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Grid, Typography, Container, TextField } from '@mui/material';
+import { Grid, Typography, TextField } from '@mui/material';
 
 // project imports
 import SubCard from 'ui-component/cards/SubCard';
@@ -76,12 +76,12 @@ const SelectContracts = () => {
                     Employee Name: {item.employee_name}
                   </Typography>
                 </Grid>
-              </SubCard>
-            </Grid>
-          ))}
-        </Grid>
-      </MainCard>
-    </Container>
+              </Grid>
+            </SubCard>
+          </Grid>
+        ))}
+      </Grid>
+    </MainCard>
   );
 };
 
