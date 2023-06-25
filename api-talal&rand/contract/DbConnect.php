@@ -1,7 +1,7 @@
 <?php
     class DbConnect {
         private $server = 'localhost';
-        private $dbname = 'contract_breif'; //contract_breif
+        private $dbname = 'breaf-6'; //contract_breif
         private $user = 'root';
         private $pass = '';
  

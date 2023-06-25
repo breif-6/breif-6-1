@@ -6,7 +6,7 @@ header("Access-Control-Allow-Headers: *");
 header("Access-Control-Allow-Methods: *");
 
 $host = 'localhost';
-$dbname = 'brief_6';
+$dbname = 'breaf-6';
 $username = 'root';
 $password = '';
 
