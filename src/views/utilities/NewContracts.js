@@ -77,7 +77,7 @@ const NewContracts = () => {
   
     try {
       // Update the contract in the API
-      const response = await axios.put(`http://localhost/breaf-6/api-mohammad/${selectedItem}`, updatedContract);
+      const response = await axios.put(`http://localhost/breif-6-1/api-mohammad/${selectedItem}`, updatedContract);
       if (response.status === 200) {
         setSuccessMessage(
           'The contract has been approved successfully. You can view it in the open table section.'
