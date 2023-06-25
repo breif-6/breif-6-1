@@ -32,7 +32,7 @@ const SelectContracts = () => {
         <Grid container spacing={gridSpacing} id="selectcontracts">
           {data.map(item => (
             <Grid item xs={6} sm={3} key={item.id}>
-              <SubCard title="Fetched Data">
+              <SubCard title={item.contract_name}>
                 <Grid container direction="column" spacing={1}>
                   <Grid item>
                     {/* <Typography variant="subtitle1" gutterBottom>
@@ -46,9 +46,6 @@ const SelectContracts = () => {
                     </Typography>
                     <Typography variant="subtitle1" gutterBottom>
                       Expiration Date: {item.expiration_date}
-                    </Typography>
-                    <Typography variant="subtitle1" gutterBottom>
-                      Contract Name: {item.contract_name}
                     </Typography>
                     <Typography variant="subtitle1" gutterBottom>
                       User Name: {item.user_name}
