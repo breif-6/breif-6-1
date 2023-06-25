@@ -13,7 +13,7 @@ $method = $_SERVER['REQUEST_METHOD'];
 switch ($method) {
     case "GET":
         $sqlContracts = "
-        SELECT uc.id, uc.employee_id, uc.status, uc.signing_date, uc.expiration_date, c.contract_name , u.name AS user_name, u.email, e.name AS employee_name , e.id AS employee_id_e
+        SELECT uc.id, uc.employee_id, uc.status, uc.signing_date, uc.expiration_date, c.contract_name , u.name AS user_name, u.email,u.id As user_id, e.name AS employee_name , e.id AS employee_id_e
         FROM user_contracts uc
         JOIN contracts c ON uc.contract_id = c.id
         JOIN users u ON uc.user_id = u.id

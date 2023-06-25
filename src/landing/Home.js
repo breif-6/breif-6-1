@@ -14,44 +14,63 @@ import Youtube from './Youtube';
 
 function Home() {
 
+//   const apiUrl = 'http://localhost/breif-6-1/api-Taqwa/Contracts/';
+
+// fetch(apiUrl)
+//   .then(response => response.json())
+//   .then(data => {
+//     const tiers = data.map(contract => {
+//       const { contract_name, total_cost,signing_date, expiration_date, buttonText, buttonVariant } = contract;
+//       return {
+//         contract_name,
+//         total_cost,
+//         signing_date,
+//         expiration_date,
+//         buttonText,
+//         buttonVariant,
+//       };
+//     });
+
+//     // Use the populated tiers array here or pass it to another function
+//     console.log(tiers);
+//   })
+//   .catch(error => {
+//     console.error('Error:', error);
+//   });
+
 
   const tiers = [
     {
-      title: 'Free',
-      price: '0',
+      title: 'Premium System Contract',
+      price: '10000',
       description: [
-        '10 users included',
-        '2 GB of storage',
-        'Help center access',
-        'Email support',
+        'signing_date:2023-06-22',
+        'expiration_date:2024-06-22',
+
       ],
       buttonText: 'Sign up for free',
-      buttonVariant: 'outlined',
-    },
-    {
-      title: 'Pro',
-      subheader: 'Most popular',
-      price: '15',
-      description: [
-        '20 users included',
-        '10 GB of storage',
-        'Help center access',
-        'Priority email support',
-      ],
-      buttonText: 'Get started',
       buttonVariant: 'contained',
     },
     {
-      title: 'Enterprise',
-      price: '30',
+      title: 'Standard System Contract',
+      // subheader: 'Most popular',
+      price: '5000',
       description: [
-        '50 users included',
-        '30 GB of storage',
-        'Help center access',
-        'Phone & email support',
+        'signing_date:2023-06-22',
+        'expiration_date:2023-06-29',
       ],
-      buttonText: 'Contact us',
-      buttonVariant: 'outlined',
+      buttonText: 'Sign up for free',
+      buttonVariant: 'contained',
+    },
+    {
+      title: 'Advanced System Contract',
+      price: '15000',
+      description: [
+        'signing_date:2023-06-22',
+        'expiration_date:2023-07-01',
+      ],
+      buttonText: 'Sign up for free',
+      buttonVariant: 'contained',
     },
   ];
 
@@ -115,7 +134,7 @@ function Home() {
                       ${tier.price}
                     </Typography>
                     <Typography variant="h6" color="text.secondary">
-                      /mo
+                      /Year
                     </Typography>
                   </Box>
                   <ul>
