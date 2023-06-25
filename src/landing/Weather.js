@@ -39,7 +39,7 @@ const Weather = () => {
         height: '100vh',
       }}
     >
-      <div className="card mb-3" style={{ maxWidth: '540px' }}>
+      <div className="card mb-3" style={{ maxWidth: '540px' }} id="weather">
         <div className="row g-0">
           <div className="col-md-4">
             <img src={image} className="img-fluid rounded-start" alt="..." />
