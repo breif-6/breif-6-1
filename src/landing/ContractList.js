@@ -20,7 +20,7 @@ export default function ContractList() {
     event.preventDefault();
 
     const data = {
-      user_id: 2,
+      user_id: localStorage.getItem("user id"), // Get the user_id from local storage
       employee_id: employeeId,
       contract_id: contractId
     };
@@ -28,6 +28,7 @@ export default function ContractList() {
     axios.post('http://localhost/breif-6-1/api-user-contracts/contract/save', data)
       .then(function (response) {
         console.log(response.data);
+        closeAddNew();
         navigate('/free/ContractList');
       });
   }
@@ -125,6 +126,7 @@ export default function ContractList() {
         <DialogTitle>Contract Details:</DialogTitle>
         <DialogContent>
           <div>
+            <p>Annual contracts</p>
             <p>Scope of Services:</p> The Provider agrees to deliver premium system services to the Client as outlined in the accompanying service agreement. <p> </p>
             <p>Term:</p> This Contract shall commence on the effective date stated herein and shall remain in effect for the duration specified in the service agreement, unless terminated earlier as per the termination provisions outlined within. <p> </p>
             <p>Payment and Fees:</p> The Client agrees to compensate the Provider according to the payment terms outlined in the service agreement.<p> </p>
