@@ -1,6 +1,6 @@
 // import Footer from './Footer';
 // import Header from './Header';
-import Logout from './Logout';
+// import Logout from './Logout';
 // import AuthRegister from './authentication/auth-forms/AuthRegister';
 // import { Routes, Route } from 'react-router-dom';
 import Weather from "./Weather";
