@@ -36,7 +36,7 @@ const NewContracts = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost/breaf-6/api-mohammad/');
+        const response = await axios.get('http://localhost/breif-6-1/api-mohammad/');
         console.log('Fetched data:', response.data);
         setData(response.data);
       } catch (error) {
@@ -105,7 +105,7 @@ const NewContracts = () => {
     setDeleteDialogOpen(false);
   
     try {
-      const response = await axios.delete(`http://localhost/breaf-6/api-mohammad/${selectedItem}`, {
+      const response = await axios.delete(`http://localhost/breaf-6-1/api-mohammad/${selectedItem}`, {
         headers: {
           'Content-Type': 'application/json',
         },
@@ -143,7 +143,7 @@ const NewContracts = () => {
 
   return (
     <MainCard
-      title="Basic Typography"
+      title="New Contracts Crud"
       secondary={<SecondaryAction link="https://next.material-ui.com/system/typography/" />}
     >
       {successMessage && (

@@ -2,6 +2,8 @@ import { lazy } from 'react';
 
 // project imports
 import MainLayout from 'layout/MainLayout';
+// import LandingPage from 'landing/LandingPage';
+
 import Loadable from 'ui-component/Loadable';
 
 // dashboard routing
@@ -13,9 +15,7 @@ const UtilsColor = Loadable(lazy(() => import('views/utilities/OpenContracts')))
 const UtilsShadow = Loadable(lazy(() => import('views/utilities/ArchiveContracts')));
 const UtilsMaterialIcons = Loadable(lazy(() => import('views/utilities/MaterialIcons')));
 const UtilsTablerIcons = Loadable(lazy(() => import('views/utilities/Contracts')));
-
-// const Userprofile = Loadable(lazy(() => import('landing/Userprofile')));
-// const UserEdit = Loadable(lazy(() => import('landing/UserEdit')));
+const App1 = Loadable(lazy(() => import('landing/App1')));
 
 // sample page routing
 const SamplePage = Loadable(lazy(() => import('views/sample-page')));
@@ -88,15 +88,11 @@ const MainRoutes = {
       path: 'sample-page',
       element: <SamplePage />
     }
-    // ,
-    // {
-    //   path: 'Userprofile',
-    //   element: <Userprofile />
-    // },
-    // {
-    //   path: 'UserEdit/:id',
-    //   element: <UserEdit />
-    // }
+    ,
+    {
+      path: 'App1',
+      element: <App1 />
+    }
   ]
 };
 

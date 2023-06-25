@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-// import SignUpForm from './sign_up';
+
 
 const Header = () => {
   return (
@@ -16,16 +16,13 @@ const Header = () => {
               <NavLink exact className="nav-link" aria-current="page" to="/">Home</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/"></NavLink>
+              <NavLink className="nav-link" to="/">Home</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/"></NavLink>
+              <NavLink className="nav-link" to="/login">Login</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/"></NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/"></NavLink>
+              <NavLink className="nav-link" to="/register">Sign up</NavLink>
             </li>
           </ul>
         </div>

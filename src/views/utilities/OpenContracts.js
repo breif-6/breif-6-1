@@ -19,7 +19,7 @@ const OpenContracts = () => {
   const [warningMessage, setWarningMessage] = useState(null);
 
   useEffect(() => {
-    fetch('http://localhost/breaf-6/api-mohammad/contracts')
+    fetch('http://localhost/breif-6-1/api-mohammad/contracts')
       .then(response => response.json())
       .then(data => setData(data))
       .catch(error => console.error(error));
@@ -33,7 +33,7 @@ const OpenContracts = () => {
   const handleDeleteConfirm = () => {
     setDeleteDialogOpen(false);
 
-    fetch(`http://localhost/breaf-6/api-mohammad/${selectedItem}`, {
+    fetch(`http://localhost/breif-6-1/api-mohammad/${selectedItem}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
