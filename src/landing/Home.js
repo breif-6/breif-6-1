@@ -1,80 +1,149 @@
-import Header from './Header';
-import Main from './Main';
-import About from './About';
-import Values from './Values';
-import Features from './Features';
-import Footer from './Footer';
-import ContractList from './ContractList';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import SignUpForm from './sign_up'
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardHeader from '@mui/material/CardHeader';
+import Grid from '@mui/material/Grid';
+import StarIcon from '@mui/icons-material/StarBorder';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import Youtube from './Youtube';
 
-
-import '../styles/Home.css';
-import React, { useEffect } from 'react';
-import $ from 'jquery';
-// import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Home() {
 
-  useEffect(() => {
-    // Add smooth scrolling to all links in navbar + footer link
-    $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
-      // Make sure this.hash has a value before overriding default behavior
-      if (this.hash !== "") {
-        // Prevent default anchor click behavior
-        event.preventDefault();
 
-        // Store hash
-        var hash = this.hash;
+  const tiers = [
+    {
+      title: 'Free',
+      price: '0',
+      description: [
+        '10 users included',
+        '2 GB of storage',
+        'Help center access',
+        'Email support',
+      ],
+      buttonText: 'Sign up for free',
+      buttonVariant: 'outlined',
+    },
+    {
+      title: 'Pro',
+      subheader: 'Most popular',
+      price: '15',
+      description: [
+        '20 users included',
+        '10 GB of storage',
+        'Help center access',
+        'Priority email support',
+      ],
+      buttonText: 'Get started',
+      buttonVariant: 'contained',
+    },
+    {
+      title: 'Enterprise',
+      price: '30',
+      description: [
+        '50 users included',
+        '30 GB of storage',
+        'Help center access',
+        'Phone & email support',
+      ],
+      buttonText: 'Contact us',
+      buttonVariant: 'outlined',
+    },
+  ];
 
-        // Using jQuery's animate() method to add smooth page scroll
-        // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
-        $('html, body').animate({
-          scrollTop: $(hash).offset().top
-        }, 900, function(){
-          // Add hash (#) to URL when done scrolling (default click behavior)
-          window.location.hash = hash;
-        });
-      } // End if
-    });
-
-    $(window).scroll(function() {
-      $(".slideanim").each(function(){
-        var pos = $(this).offset().top;
-
-        var winTop = $(window).scrollTop();
-        if (pos < winTop + 600) {
-          $(this).addClass("slide");
-        }
-      });
-    });
-  }, []);
-
+  
     return (
       <>
-      <Header />
+        <Container disableGutters maxWidth="sm" component="main" sx={{ pt: 8, pb: 6 }}>
+        <Typography
+          component="h3"
+          variant="h3"
+          align="center"
+          color="text.primary"
+          gutterBottom
+        >
+         NexTalk
+        </Typography>
+        <Typography variant="h5" align="center" color="text.secondary" component="p">
+        We are a network company specializing in contract-based solutions. 
+        With our expertise and dedication, we provide high-quality services to our clients.
 
-     <BrowserRouter>
-      <div className="Home">
-        <Header />
-        <Routes>
-         
-          <Route exact path="/sign_up" element={<SignUpForm />} />
-        </Routes>
+        </Typography>
+      </Container>
+      {/* End hero unit */}
+      <Container maxWidth="md" component="main">
+        <Grid container spacing={5} alignItems="flex-end">
+          {tiers.map((tier) => (
+            // Enterprise card is full width at sm breakpoint
+            <Grid
+              item
+              key={tier.title}
+              xs={12}
+              sm={tier.title === 'Enterprise' ? 12 : 6}
+              md={4}
+            >
+              <Card>
+                <CardHeader
+                  title={tier.title}
+                  subheader={tier.subheader}
+                  titleTypographyProps={{ align: 'center' }}
+                  action={tier.title === 'Pro' ? <StarIcon /> : null}
+                  subheaderTypographyProps={{
+                    align: 'center',
+                  }}
+                  sx={{
+                    backgroundColor: (theme) =>
+                      theme.palette.mode === 'light'
+                        ? theme.palette.grey[200]
+                        : theme.palette.grey[700],
+                  }}
+                />
+                <CardContent>
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      justifyContent: 'center',
+                      alignItems: 'baseline',
+                      mb: 2,
+                    }}
+                  >
+                    <Typography component="h2" variant="h3" color="text.primary">
+                      ${tier.price}
+                    </Typography>
+                    <Typography variant="h6" color="text.secondary">
+                      /mo
+                    </Typography>
+                  </Box>
+                  <ul>
+                    {tier.description.map((line) => (
+                      <Typography
+                        component="li"
+                        variant="subtitle1"
+                        align="center"
+                        key={line}
+                      >
+                        {line}
+                      </Typography>
+                    ))}
+                  </ul>
+                </CardContent>
+                <CardActions>
+                  <Button fullWidth variant={tier.buttonVariant}>
+                    {tier.buttonText}
+                  </Button>
+                </CardActions>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
 
-        <Footer />
-      </div>
-     </BrowserRouter>
+        <Youtube />
 
-      {/* 
-      <ContractList />
-      <Main />
-      
-
-      <About />
-      <Values /><ContractList />
-      <Features />
-      <Footer /> */}
+      </Container>
       </>
     );
   }
