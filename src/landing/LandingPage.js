@@ -151,6 +151,7 @@ export default function Pricing() {
            <Route exact path="/login" element={<Login />} />
            <Route exact path="/register" element={<AuthRegister />} />
            <Route exact path="/" element={<Home />} />
+           
         </Routes>
       {/* end Home */}
          
