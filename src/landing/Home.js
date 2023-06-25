@@ -150,10 +150,12 @@ function Home() {
                     ))}
                   </ul>
                 </CardContent>
-                <CardActions>
+                <CardActions sx={{ justifyContent: 'center' }}>
+                  <Link href="/Login">
                   <Button fullWidth variant={tier.buttonVariant}>
                     {tier.buttonText}
                   </Button>
+                  </Link>
                 </CardActions>
               </Card>
             </Grid>

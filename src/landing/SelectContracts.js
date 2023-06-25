@@ -9,7 +9,8 @@ import { gridSpacing } from 'store/constant';
 
 const SelectContracts = () => {
   const [data, setData] = useState([]);
-  const user_id = window.localStorage.getItem('id');
+  const user_id = window.localStorag
+  e.getItem('id');
 
   useEffect(() => {
     fetch(`http://localhost/breif-6-1/api-mohammad/contracts/${user_id}`)
