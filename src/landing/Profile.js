@@ -1,14 +1,10 @@
 import React, { useState } from 'react';
-import Logout from './Logout';
-import ContractList from './ContractList';
-// import Weather from './Weather';
 import { Container, Grid } from '@mui/material';
-
-// import AuthRegister from './authentication/auth-forms/AuthRegister';
-// import { Routes, Route } from 'react-router-dom';
-import Weather from "./Weather";
-import Userprofile from "./Userprofile";
-import SelectContracts from "./SelectContracts";
+import Userprofile from './Userprofile';
+import ContractList from './ContractList';
+import Weather from './Weather';
+import SelectContracts from './SelectContracts';
+import Logout from './Logout';
 
 function Profile() {
   const [showContractList, setShowContractList] = useState(false);
@@ -17,20 +13,68 @@ function Profile() {
     setShowContractList(prevState => !prevState);
   };
 
+  const scrollToComponent = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <>
-      <Logout />
-      <Userprofile />
-      <Container>
-        <Grid container justifyContent="center" alignItems="center" style={{ minHeight: '50vh' }}>
-          <Grid item>
-            <button className="btn btn-primary" onClick={toggleContractList}>Show offers</button>
+      <nav className="navbar fixed-top navbar-expand-lg" style={{ backgroundColor: "#b9defe" }}>
+        <div className="container-fluid">
+          <span
+            className="navbar-brand"
+            role="button"
+            tabIndex={0}
+            onClick={() => scrollToComponent('home')}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                scrollToComponent('home');
+              }
+            }}
+          >
+            NexTalk
+          </span>
+          <span
+            className="navbar-brand"
+            role="button"
+            tabIndex={0}
+            onClick={() => scrollToComponent('logout')}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                scrollToComponent('logout');
+              }
+            }}
+          >
+            <Logout />
+          </span>
+        </div>
+      </nav>
+
+      <div id="home">
+        <Userprofile />
+        <Container>
+          <Grid container justifyContent="center" alignItems="center" style={{ minHeight: '50vh' }}>
+            <Grid item>
+              <button className="btn btn-primary" onClick={toggleContractList}>
+                Show offers
+              </button>
+            </Grid>
           </Grid>
-        </Grid>
-      </Container>
-      {showContractList && <ContractList />}
-      <Weather />
-      <SelectContracts/>
+        </Container>
+      </div>
+
+      <div id="contractlist">{showContractList && <ContractList />}</div>
+
+      <div id="weather">
+        <Weather />
+      </div>
+
+      <div id="selectcontracts">
+        <SelectContracts />
+      </div>
     </>
   );
 }

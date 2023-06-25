@@ -110,7 +110,7 @@ export default function ContractList() {
             }
 
             return (
-              <div className="card" key={contract.id} style={{ width: '23rem' }}>
+              <div className="card" key={contract.id} style={{ width: '23rem' }} id="contractlist">
                 <div className="card-body">
                   <h4 className="card-title">{contract.contract_name}</h4>
                   <img style={{ margin:'5px' }} src={selectedImage} className="card-img-top" alt="..." />
