@@ -72,11 +72,11 @@ const ProfileStatistics = () => {
   };
 
   return (
-    <section style={{ backgroundColor: '#f4f5f7' }}>
-      <Container className="py-5" sx={{ height: '100vh' }}>
+    <section id="userprofile">
+      <Container className="py-5" sx={{ height: '70vh' }}>
         <Grid container justifyContent="center" alignItems="center" sx={{ height: '100%' }}>
           <Grid item md={6} mb={4} mb-lg={0}>
-            <Card sx={{ borderRadius: '.5rem' }}>
+            <Card sx={{ borderRadius: '.5rem', border: '1px solid #ccc' }}>
               <Grid container>
                 <Grid
                   item

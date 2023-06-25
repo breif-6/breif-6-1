@@ -36,10 +36,10 @@ const Weather = () => {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        height: '100vh',
+        height: '70vh',
       }}
     >
-      <div className="card mb-3" style={{ maxWidth: '540px' }}>
+      <div className="card mb-3" style={{ maxWidth: '540px' }} id="weather">
         <div className="row g-0">
           <div className="col-md-4">
             <img src={image} className="img-fluid rounded-start" alt="..." />
