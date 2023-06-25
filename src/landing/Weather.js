@@ -10,7 +10,7 @@ const Weather = () => {
 
   const fetchWeatherData = async (city) => {
     try {
-        const response = await axios.get(`${apiurl}${city}&appid=${apikey}`);
+      const response = await axios.get(`${apiurl}${city}&appid=${apikey}`);
 
       const { list } = response.data;
       if (list && list.length > 0) {

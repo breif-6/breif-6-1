@@ -20,7 +20,7 @@ export default function ContractList() {
     event.preventDefault();
 
     const data = {
-      user_id: 2,
+      user_id: localStorage.getItem("user id"), // Get the user_id from local storage
       employee_id: employeeId,
       contract_id: contractId
     };
@@ -28,6 +28,7 @@ export default function ContractList() {
     axios.post('http://localhost/breif-6-1/api-user-contracts/contract/save', data)
       .then(function (response) {
         console.log(response.data);
+        closeAddNew();
         navigate('/free/ContractList');
       });
   }
