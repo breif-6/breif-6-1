@@ -9,7 +9,7 @@ import MainCard from 'ui-component/cards/MainCard';
 import SecondaryAction from 'ui-component/cards/CardSecondaryAction';
 import { Alert, AlertTitle } from '@mui/material'; // Added Alert and AlertTitle
 
-const API_URL = 'http://localhost/breaf-6/api-contracts-crud/';
+const API_URL = 'http://localhost/breif-6-1/api-contracts-crud';
 
 const Contracts = () => {
   const [data, setData] = useState([]);

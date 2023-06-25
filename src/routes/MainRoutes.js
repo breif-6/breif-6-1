@@ -2,6 +2,8 @@ import { lazy } from 'react';
 
 // project imports
 import MainLayout from 'layout/MainLayout';
+// import LandingPage from 'landing/LandingPage';
+
 import Loadable from 'ui-component/Loadable';
 
 
