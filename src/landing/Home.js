@@ -10,8 +10,14 @@ import StarIcon from '@mui/icons-material/StarBorder';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Youtube from './Youtube';
+<<<<<<< HEAD
 // import Login from './Login';
 import Link from '@mui/material/Link';
+=======
+import Link from '@mui/material/Link';
+
+
+>>>>>>> 2d85e165450df0a64dc60781eb3f6ce56e097ca4
 function Home() {
 
 //   const apiUrl = 'http://localhost/breif-6-1/api-Taqwa/Contracts/';
@@ -161,9 +167,8 @@ function Home() {
             </Grid>
           ))}
         </Grid>
-
+        <br /><br />
         <Youtube />
-
       </Container>
       </>
     );

@@ -31,14 +31,14 @@ switch($method) {
 
         case "POST":
             $user = json_decode(file_get_contents('php://input'));
-            $hashedPassword = password_hash($user->password, PASSWORD_DEFAULT);
+            // $hashedPassword = password_hash($user->password, PASSWORD_DEFAULT);
             
             $sql = "INSERT INTO users(name, email, password, address,role_id) VALUES(:name, :email, :password, :address,2)";
             $stmt = $conn->prepare($sql);
         
             $stmt->bindParam(':name', $user->name);
             $stmt->bindParam(':email', $user->email);
-            $stmt->bindParam(':password', $hashedPassword); // Use hashed password
+            $stmt->bindParam(':password',$user->password ); // Use hashed password
             $stmt->bindParam(':address', $user->address);
         
             if ($stmt->execute()) {
