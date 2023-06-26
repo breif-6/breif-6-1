@@ -93,7 +93,7 @@ function Profile() {
 
       <div id="contractlist">{showContractList && <ContractList />}</div>
 
-      <div id="weather">
+      <div id="weather" style={{marginLeft: '700px'}}>
         <Weather />
       </div>
 
