@@ -17,13 +17,26 @@ const OpenContracts = () => {
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [successMessage, setSuccessMessage] = useState(null);
   const [warningMessage, setWarningMessage] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = () => {
+    setIsLoading(true);
+
     fetch('http://localhost/breif-6-1/api-mohammad/contracts')
       .then(response => response.json())
-      .then(data => setData(data))
-      .catch(error => console.error(error));
-  }, []);
+      .then(data => {
+        setData(data);
+        setIsLoading(false);
+      })
+      .catch(error => {
+        console.error(error);
+        setIsLoading(false);
+      });
+  };
 
   const handleDelete = (id) => {
     setSelectedItem(id);
@@ -32,6 +45,8 @@ const OpenContracts = () => {
 
   const handleDeleteConfirm = () => {
     setDeleteDialogOpen(false);
+
+    setIsLoading(true);
 
     fetch(`http://localhost/breif-6-1/api-mohammad/${selectedItem}`, {
       method: 'DELETE',
@@ -46,16 +61,13 @@ const OpenContracts = () => {
           'The contract has been deleted successfully. You can view it in the archive table section.'
         );
         setWarningMessage(null);
-
-        // Remove the specific item from the data state
-        setData((prevData) =>
-          prevData.filter((item) => item.id !== selectedItem)
-        );
+        fetchData();
       })
       .catch((error) => {
         console.error(error);
         setSuccessMessage(null);
         setWarningMessage('An error occurred while deleting the contract.');
+        setIsLoading(false);
       });
   };
 
@@ -75,50 +87,55 @@ const OpenContracts = () => {
         </Alert>
       )}
       <Grid container spacing={gridSpacing}>
-            {data.contracts && data.contracts.map(item => {
-          if (item.status === 'open') {
-            return (
-              <Grid item xs={12} sm={6} key={item.id}>
-                <SubCard title="Fetched Data">
-                  <Grid container direction="column" spacing={1}>
-                    <Grid item>
-                      <Typography variant="subtitle1" gutterBottom>
-                        ID: {item.id}
-                      </Typography>
-                      <Typography variant="subtitle1" gutterBottom>
-                        Status: {item.status}
-                      </Typography>
-                      <Typography variant="subtitle1" gutterBottom>
-                        Signing Date: {item.signing_date}
-                      </Typography>
-                      <Typography variant="subtitle1" gutterBottom>
-                        Expiration Date: {item.expiration_date}
-                      </Typography>
-                      <Typography variant="subtitle1" gutterBottom>
-                        Contract Name: {item.contract_name}
-                      </Typography>
-                      <Typography variant="subtitle1" gutterBottom>
-                        User Name: {item.user_name}
-                      </Typography>
-                      <Typography variant="subtitle1" gutterBottom>
-                        Email: {item.email}
-                      </Typography>
-                      <Typography variant="subtitle1" gutterBottom>
-                        Employee Name: {item.employee_name}
-                      </Typography>
+        {isLoading ? (
+          <Typography variant="body1">Loading...</Typography>
+        ) : (
+          data.contracts &&
+          data.contracts.map((item) => {
+            if (item.status === 'open') {
+              return (
+                <Grid item xs={12} sm={6} key={item.id}>
+                  <SubCard title="Fetched Data">
+                    <Grid container direction="column" spacing={1}>
+                      <Grid item>
+                        <Typography variant="subtitle1" gutterBottom>
+                          ID: {item.id}
+                        </Typography>
+                        <Typography variant="subtitle1" gutterBottom>
+                          Status: {item.status}
+                        </Typography>
+                        <Typography variant="subtitle1" gutterBottom>
+                          Signing Date: {item.signing_date}
+                        </Typography>
+                        <Typography variant="subtitle1" gutterBottom>
+                          Expiration Date: {item.expiration_date}
+                        </Typography>
+                        <Typography variant="subtitle1" gutterBottom>
+                          Contract Name: {item.contract_name}
+                        </Typography>
+                        <Typography variant="subtitle1" gutterBottom>
+                          User Name: {item.user_name}
+                        </Typography>
+                        <Typography variant="subtitle1" gutterBottom>
+                          Email: {item.email}
+                        </Typography>
+                        <Typography variant="subtitle1" gutterBottom>
+                          Employee Name: {item.employee_name}
+                        </Typography>
+                      </Grid>
+                      <Grid item>
+                        <Button variant="contained" color="error" onClick={() => handleDelete(item.id)}>
+                          Delete
+                        </Button>
+                      </Grid>
                     </Grid>
-                    <Grid item>
-                      <Button variant="contained" color="error" onClick={() => handleDelete(item.id)}>
-                        Delete
-                      </Button>
-                    </Grid>
-                  </Grid>
-                </SubCard>
-              </Grid>
-            );
-          }
-          return null;
-        })}
+                  </SubCard>
+                </Grid>
+              );
+            }
+            return null;
+          })
+        )}
       </Grid>
       <Dialog open={deleteDialogOpen} onClose={handleClose}>
         <DialogTitle>Confirm Deletion</DialogTitle>
