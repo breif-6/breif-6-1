@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { styled } from '@mui/system';
 import { Typography } from '@mui/material';
-
-const API = 'AIzaSyDdLvLb_5IMUn2PRcmv4EStnFEwQXHVcAc';
+//AIzaSyCSvv-KiRO2XiJGYpAKL5BtksBGvuxS0jg
+//AIzaSyDdLvLb_5IMUn2PRcmv4EStnFEwQXHVcAc
+//AIzaSyBgQwXgdjG4ZzrmsXNmb4k5K-Ur9Uiqza4
+const API = 'AIzaSyBgQwXgdjG4ZzrmsXNmb4k5K-Ur9Uiqza4';
 const channelId = 'UCSTBpjukawEv6ZUmH6l-ibw';
 const fetchUrl = `https://www.googleapis.com/youtube/v3/search?key=${API}&channelId=${channelId}&part=snippet,id&order=date&maxResults=1`;
 
@@ -44,11 +46,11 @@ const Youtube = () => {
       {video && (
         <div>
           <iframe
-            width="560"
-            height="315"
+            width="900"
+            height="500"
             src={video.videoLink}
             title="YouTube video player"
-            frameBorder="0"
+            frameBorder="10"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
           ></iframe>

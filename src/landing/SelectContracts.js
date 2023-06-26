@@ -34,7 +34,8 @@ const SelectContracts = () => {
 
   return (
     <MainCard
-      title="Contracts That Work Now"
+      title="This is Your Contracts That Work Now ,
+       you can select other contract from the show offer above"
       secondary={<SecondaryAction link="https://next.material-ui.com/system/typography/" />}
     >
       <TextField

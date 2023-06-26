@@ -78,24 +78,34 @@ function Profile() {
         </div>
       </nav>
 
-      <div id="home">
-        <Userprofile />
-        <Container>
-          <Grid container justifyContent="center" alignItems="center" style={{ Height: '10px' }}>
-            <Grid item>
-              <button className="btn btn-primary" onClick={toggleContractList}>
-                Show offers
-              </button>
-            </Grid>
+      <div id="home" style={{  top: 0, backgroundColor: '#f5f5f5' }}>
+        <Grid container>
+          <Grid item xs={6}>
+            <Userprofile />
           </Grid>
-        </Container>
+          <Grid item xs={6}>
+            <div id="weather">
+              <Weather />
+            </div>
+          </Grid>
+        </Grid>
       </div>
+
+      <Container style={{ marginTop: '100px' }}>
+        <Grid container justifyContent="center" alignItems="center">
+          <Grid item>
+            <button className="btn btn-primary" onClick={toggleContractList}>
+              Show offers
+            </button>
+          </Grid>
+        </Grid>
+      </Container>
 
       <div id="contractlist">{showContractList && <ContractList />}</div>
 
-      <div id="weather">
+      {/* <div id="weather">
         <Weather />
-      </div>
+      </div> */}
 
       <div id="selectContracts">
         <SelectContracts />
