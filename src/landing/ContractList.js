@@ -123,11 +123,11 @@ export default function ContractList() {
             }
 
             let selectedImage;
-            if (contract.id === 4) {
+            if (contract.id === 2) {
               selectedImage = image1;
-            } else if (contract.id === 16) {
+            } else if (contract.id === 3) {
               selectedImage = image2;
-            } else if (contract.id === 20) {
+            } else if (contract.id === 4) {
               selectedImage = image3;
             }
 

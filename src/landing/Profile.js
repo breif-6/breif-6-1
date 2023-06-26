@@ -78,7 +78,7 @@ function Profile() {
         </div>
       </nav>
 
-      <div id="home" style={{  top: 0, backgroundColor: '#f5f5f5' }}>
+      <div id="home" >
         <Grid container>
           <Grid item xs={6}>
             <Userprofile />

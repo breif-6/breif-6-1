@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Grid, Typography, TextField } from '@mui/material';
+import { Grid, Typography, TextField, Container  } from '@mui/material';
+
 
 // project imports
 import SubCard from 'ui-component/cards/SubCard';
@@ -33,6 +34,7 @@ const SelectContracts = () => {
   };
 
   return (
+    <Container style={{ textAlign: 'center' }}>
     <MainCard
       title="This is Your Contracts That Work Now ,
        you can select other contract from the show offer above"
@@ -48,24 +50,15 @@ const SelectContracts = () => {
 
       <Grid container spacing={gridSpacing}>
         {filteredData.map(item => (
-          <Grid item xs={12} sm={6} key={item.id}>
-            <SubCard title="Fetched Data">
+          <Grid item xs={12} sm={3} key={item.id}>
+            <SubCard title={item.contract_name}>
               <Grid container direction="column" spacing={1}>
                 <Grid item>
-                  <Typography variant="subtitle1" gutterBottom>
-                    ID: {item.id}
-                  </Typography>
-                  <Typography variant="subtitle1" gutterBottom>
-                    Status: {item.status}
-                  </Typography>
                   <Typography variant="subtitle1" gutterBottom>
                     Signing Date: {item.signing_date}
                   </Typography>
                   <Typography variant="subtitle1" gutterBottom>
                     Expiration Date: {item.expiration_date}
-                  </Typography>
-                  <Typography variant="subtitle1" gutterBottom>
-                    Contract Name: {item.contract_name}
                   </Typography>
                   <Typography variant="subtitle1" gutterBottom>
                     User Name: {item.user_name}
@@ -83,6 +76,7 @@ const SelectContracts = () => {
         ))}
       </Grid>
     </MainCard>
+    </Container>
   );
 };
 
