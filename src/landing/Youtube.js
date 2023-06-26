@@ -3,7 +3,7 @@ import axios from 'axios';
 import { styled } from '@mui/system';
 import { Typography } from '@mui/material';
 
-const API = 'AIzaSyCSvv-KiRO2XiJGYpAKL5BtksBGvuxS0jg';
+const API = 'AIzaSyDdLvLb_5IMUn2PRcmv4EStnFEwQXHVcAc';
 const channelId = 'UCSTBpjukawEv6ZUmH6l-ibw';
 const fetchUrl = `https://www.googleapis.com/youtube/v3/search?key=${API}&channelId=${channelId}&part=snippet,id&order=date&maxResults=1`;
 
