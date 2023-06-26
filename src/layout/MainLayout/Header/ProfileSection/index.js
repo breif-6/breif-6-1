@@ -22,10 +22,14 @@ import PerfectScrollbar from 'react-perfect-scrollbar';
 import MainCard from 'ui-component/cards/MainCard';
 import Transitions from 'ui-component/extended/Transitions';
 import User1 from 'assets/images/users/user-round.svg';
+import { useNavigate } from 'react-router-dom';
 
 import { IconLogout, IconSettings } from '@tabler/icons';
 
 const ProfileSection = () => {
+
+  let navigate = useNavigate();
+
   const theme = useTheme();
   const customization = useSelector((state) => state.customization);
 
@@ -53,6 +57,7 @@ const ProfileSection = () => {
 
   const handleLogout = () => {
     localStorage.removeItem('role_id');
+    navigate(`/free`);
     window.location.reload();
   };
 
