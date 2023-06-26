@@ -10,7 +10,7 @@ import Home from './Home';
 // import About from './About';
 import AuthRegister from './authentication/auth-forms/AuthRegister';
 // import CustomerCenter from './CustomerCenter';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route,NavLink } from 'react-router-dom';
 
 // const MainContainer = styled(Container)({
 //   display: 'flex',
@@ -117,32 +117,32 @@ export default function Pricing() {
       >
         <Toolbar sx={{ flexWrap: 'wrap' }}>
           <Typography variant="h4" color="inherit" noWrap sx={{ flexGrow: 1 }}>
-          <Link
+          <NavLink
               variant="button"
               color="text.primary"
-              href="/free"
+              to="/free"
               sx={{ my: 1, mx: 1.5 }}
             >
               NexTalk
-            </Link>
+            </NavLink>
           </Typography>
           <nav>
             
             
-            <Link
+            <NavLink
               variant="button"
               color="text.primary"
-              href="/login"
+              to="/login"
               sx={{ my: 1, mx: 1.5 }}
             >
               Login
-            </Link>
+            </NavLink>
           </nav>
-            {/* <Link to=""> */}
-          <Button href="/register" variant="outlined" sx={{ my: 1, mx: 1.5 }}>
+            <NavLink to="/register">
+          <Button variant="outlined" sx={{ my: 1, mx: 1.5 }}>
           Sign up
           </Button>
-          {/* </Link> */}
+          </NavLink>
         </Toolbar>
       </AppBar>
        {/* start Home */}
